@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaren Avarbek | Çevirmen Portfolyosu</title>
+    <!-- Google Fonts: Sade, modern ve profesyonel yazı tipleri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================================
+           1. RENK PALETİ VE TEMEL DEĞİŞKENLER (Krem & Toprak Tonları)
+           ========================================================= */
+        :root {
+            --bg-creme: #FDFBF7;          /* Ana arka plan krem tonu */
+            --bg-card: #F4EFE6;           /* Kart ve kutu arka planı */
+            --bg-card-hover: #ECE4D6;     /* Kart üzerine gelinceki ton */
+            --text-main: #2C2621;         /* Ana metin rengi (yumuşak koyu kahve/antrasit) */
+            --text-muted: #6E665E;        /* İkincil soluk metin rengi */
+            --accent-warm: #C89666;       /* Vurgu rengi (sıcak bej/karamel) */
+            --border-color: #E2D9CC;      /* Kenarlık çizgileri */
+            --border-focus: #C89666;
+            --shadow-soft: 0 10px 30px rgba(74, 60, 49, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        /* Sıfırlama ve Temel Ayarlar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-creme);
+            color: var(--text-main);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* Konteyner & Grid Yapısı */
+        .container {
+            width: 90%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* =========================================================
+           2. ÜST MENÜ VE DİL DEĞİŞTİRME BUTONLARI (TR / EN / ESP)
+           ========================================================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(253, 251, 247, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.1rem 0;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        /* Dil Değiştirici Butonları */
+        .lang-switch {
+            display: flex;
+            gap: 0.35rem;
+            background: var(--bg-card);
+            padding: 0.25rem 0.35rem;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 0.35rem 0.85rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background-color: var(--text-main);
+            color: var(--bg-creme);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--text-main);
+        }
+
+        /* =========================================================
+           3. GİRİŞ BÖLÜMÜ (HERO) VE DAKTİLO / ALFABE ANİMASYONU
+           ========================================================= */
+        .hero {
+            padding: 5.5rem 0 3.5rem 0;
+            text-align: center;
+        }
+
+        .badge-academic {
+            display: inline-block;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 1.1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        /* Çevirmen hissi veren daktilo animasyon kutusu */
+        .typewriter-box {
+            min-height: 4.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .typewriter-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            background: linear-gradient(180deg, transparent 75%, #eddac2 75%);
+            padding: 0 4px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2.5px;
+            background-color: var(--accent-warm);
+            margin-left: 4px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Dil etiketleri */
+        .lang-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .lang-tag {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.45rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-main);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        /* =========================================================
+           4. BÖLÜMLER GENEL DÜZENİ
+           ========================================================= */
+        section {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-warm);
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Kart Yapısı */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            background-color: var(--bg-card-hover);
+        }
+
+        /* Hakkımda Bölümü */
+        .about-text {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+
+        /* Deneyim Bölümü */
+        .experience-card {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 3px solid var(--accent-warm);
+            background: var(--bg-card);
+            border-radius: 0 12px 12px 0;
+            padding: 1.8rem;
+        }
+
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-role {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        /* Hobiler / İlgi Alanları Grid */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .hobby-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-warm);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+        }
+
+        .hobby-icon {
+            font-size: 1.6rem;
+            background: var(--bg-card);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .hobby-info h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .hobby-info p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        /* İletişim & Sosyal Medya */
+        .contact-box {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            background-color: var(--text-main);
+            color: var(--bg-creme);
+            text-decoration: none;
+            padding: 0.85rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .linkedin-link:hover {
+            background-color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .linkedin-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Boş bırakılan yerler için özel stil */
+        .placeholder-tag {
+            color: var(--accent-warm);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2.5rem 0;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        /* =========================================================
+           5. MOBİL UYUMLULUK (RESPONSIVE)
+           ========================================================= */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.1rem;
+            }
+            .typewriter-text {
+                font-size: 1.05rem;
+            }
+            .experience-card {
+                padding-left: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ÜST GEZİNME VE DİL SEÇİMİ -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">YA.</a>
+            
+            <!-- TR - EN - ESP Dil Değiştirici -->
+            <div class="lang-switch" role="group" aria-label="Language Selector">
+                <button class="lang-btn active" onclick="changeLanguage('tr')" id="btn-tr">TR</button>
+                <button class="lang-btn" onclick="changeLanguage('en')" id="btn-en">EN</button>
+                <button class="lang-btn" onclick="changeLanguage('esp')" id="btn-esp">ESP</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- GİRİŞ (HERO) ALANI -->
+        <section class="hero">
+            <!-- Üniversite & Bölüm Bilgisi -->
+            <span class="badge-academic" data-i18n="education">Yeni Yüzyıl Üniversitesi • İngilizce Mütercim Tercümanlık (4. Sınıf)</span>
+            
+            <h1 class="hero-title">Yaren Avarbek</h1>
+
+            <!-- Daktilo / Çeviri Yazı Animasyonu Bölümü -->
+            <div class="typewriter-box">
+                <span id="typewriter" class="typewriter-text"></span>
+                <span class="cursor">&nbsp;</span>
+            </div>
+
+            <!-- Çalışma Dilleri -->
+            <div class="lang-tags">
+                <span class="lang-tag" data-i18n="lang1">🇬🇧 İngilizce (English)</span>
+                <span class="lang-tag" data-i18n="lang2">🇪🇸 İspanyolca (Español)</span>
+            </div>
+        </section>
+
+        <!-- 1. HAKKIMDA BÖLÜMÜ -->
+        <section id="about">
+            <div class="section-header">
+                <span class="section-label" data-i18n="about_label">01. Profil</span>
+                <h2 class="section-title" data-i18n="about_title">Hakkımda</h2>
+            </div>
+            <div class="card">
+                <p class="about-text" data-i18n="about_content">
+                    Farklı diller ve kültürler ilgimi çekiyor.
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. DENEYİM BÖLÜMÜ -->
+        <section id="experience">
+            <div class="section-header">
+                <span class="section-label" data-i18n="exp_label">02. Deneyim</span>
+                <h2 class="section-title" data-i18n="exp_title">Deneyim</h2>
+            </div>
+            <div class="experience-card">
+                <h3 class="experience-title">Gala Tercüme & Danışmanlık Bürosu</h3>
+                <p class="experience-role" data-i18n="exp_role">Pozisyon / Tarih: <span class="placeholder-tag">[buraya ekle]</span></p>
+                <p class="experience-desc" data-i18n="exp_desc">Detaylar / Görev Tanımı: <span class="placeholder-tag">[buraya ekle]</span></p>
+            </div>
+        </section>
+
+        <!-- 5. İLGİ ALANLARI / HOBİLER -->
+        <section id="hobbies">
+            <div class="section-header">
+                <span class="section-label" data-i18n="hobby_label">03. İlgi Alanları</span>
+                <h2 class="section-title" data-i18n="hobby_title">İlgi Alanlarım & Hobilerim</h2>
+            </div>
+            <div class="hobbies-grid">
+                <!-- Sinema -->
+                <div class="hobby-card">
+                    <div class="hobby-icon">🎬</div>
+                    <div class="hobby-info">
+                        <h4 data-i18n="hobby1_title">Sinema</h4>
+                        <p data-i18n="hobby1_desc">Görsel anlatı ve dünya sineması</p>
+                    </div>
+                </div>
+
+                <!-- Psikoloji -->
+                <div class="hobby-card">
+                    <div class="hobby-icon">🧠</div>
+                    <div class="hobby-info">
+                        <h4 data-i18n="hobby2_title">Psikoloji</h4>
+                        <p data-i18n="hobby2_desc">İnsan davranışı ve bilişsel süreçler</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. İLETİŞİM BÖLÜMÜ -->
+        <section id="contact">
+            <div class="section-header">
+                <span class="section-label" data-i18n="contact_label">04. İletişim</span>
+                <h2 class="section-title" data-i18n="contact_title">İletişim</h2>
+            </div>
+            <div class="contact-box">
+                <p data-i18n="contact_desc">Benimle profesyonel iş birlikleri ve çeviri projeleri için iletişime geçebilirsiniz.</p>
+                
+                <!-- LinkedIn Butonu: Profil bağlantınızı href="..." kısmına ekleyebilirsiniz -->
+                <a href="https://www.linkedin.com/search/results/all/?keywords=Yaren%20Avarbek" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    <span>Linkedin: Yaren Avarbek</span>
+                </a>
+                
+                <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);" data-i18n="email_info">
+                    E-posta: <span class="placeholder-tag">[buraya ekle]</span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER / ALT BİLGİ -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Yaren Avarbek — <span data-i18n="footer_title">Çevirmen Portfolyosu</span></p>
+        </div>
+    </footer>
+
+    <!-- =========================================================
+         6. JAVASCRIPT: DİL DEĞİŞTİRME & DAKTİLO EFEKTİ
+         ========================================================= -->
+    <script>
+        /* -------------------------------------------------------------
+           ÇEVİRİ METİNLERİ (TR, EN, ESP)
+           İstediğiniz zaman metinleri bu tablodan kolayca güncelleyebilirsiniz.
+           ------------------------------------------------------------- */
+        const translations = {
+            tr: {
+                tagline: "Yazılı çeviri alanında uzmanlaşmak isteyen çevirmen adayıyım.",
+                education: "Yeni Yüzyıl Üniversitesi • İngilizce Mütercim Tercümanlık (4. Sınıf)",
+                lang1: "🇬🇧 İngilizce (English)",
+                lang2: "🇪🇸 İspanyolca (Español)",
+                about_label: "01. Profil",
+                about_title: "Hakkımda",
+                about_content: "Farklı diller ve kültürler ilgimi çekiyor.",
+                exp_label: "02. Deneyim",
+                exp_title: "Deneyim",
+                exp_role: "Pozisyon / Tarih: <span class='placeholder-tag'>[buraya ekle]</span>",
+                exp_desc: "Detaylar / Görev Tanımı: <span class='placeholder-tag'>[buraya ekle]</span>",
+                hobby_label: "03. İlgi Alanları",
+                hobby_title: "İlgi Alanlarım & Hobilerim",
+                hobby1_title: "Sinema",
+                hobby1_desc: "Görsel anlatı ve dünya sineması",
+                hobby2_title: "Psikoloji",
+                hobby2_desc: "İnsan davranışı ve bilişsel süreçler",
+                contact_label: "04. İletişim",
+                contact_title: "İletişim",
+                contact_desc: "Benimle profesyonel iş birlikleri ve çeviri projeleri için iletişime geçebilirsiniz.",
+                email_info: "E-posta: <span class='placeholder-tag'>[buraya ekle]</span>",
+                footer_title: "Çevirmen Portfolyosu"
+            },
+            en: {
+                tagline: "Aspiring translator aiming to specialize in written translation.",
+                education: "Yeni Yüzyıl University • English Translation & Interpreting (Senior Student)",
+                lang1: "🇬🇧 English",
+                lang2: "🇪🇸 Spanish",
+                about_label: "01. Profile",
+                about_title: "About Me",
+                about_content: "I am deeply interested in different languages and cultures.",
+                exp_label: "02. Experience",
+                exp_title: "Experience",
+                exp_role: "Position / Date: <span class='placeholder-tag'>[buraya ekle]</span>",
+                exp_desc: "Details / Job Description: <span class='placeholder-tag'>[buraya ekle]</span>",
+                hobby_label: "03. Interests",
+                hobby_title: "Interests & Hobbies",
+                hobby1_title: "Cinema",
+                hobby1_desc: "Visual storytelling and world cinema",
+                hobby2_title: "Psychology",
+                hobby2_desc: "Human behavior and cognitive processes",
+                contact_label: "04. Contact",
+                contact_title: "Contact",
+                contact_desc: "Feel free to get in touch for professional translation collaborations.",
+                email_info: "Email: <span class='placeholder-tag'>[buraya ekle]</span>",
+                footer_title: "Translator Portfolio"
+            },
+            esp: {
+                tagline: "Futura traductora con el objetivo de especializarme en traducción escrita.",
+                education: "Universidad Yeni Yüzyıl • Traducción e Interpretación de Inglés (4.° Curso)",
+                lang1: "🇬🇧 Inglés",
+                lang2: "🇪🇸 Español",
+                about_label: "01. Perfil",
+                about_title: "Sobre mí",
+                about_content: "Me fascinan las diferentes lenguas y culturas.",
+                exp_label: "02. Experiencia",
+                exp_title: "Experiencia",
+                exp_role: "Puesto / Fecha: <span class='placeholder-tag'>[buraya ekle]</span>",
+                exp_desc: "Detalles / Descripción: <span class='placeholder-tag'>[buraya ekle]</span>",
+                hobby_label: "03. Intereses",
+                hobby_title: "Intereses & Pasatiempos",
+                hobby1_title: "Cine",
+                hobby1_desc: "Narrativa visual y cine internacional",
+                hobby2_title: "Psicología",
+                hobby2_desc: "Comportamiento humano y procesos cognitivos",
+                contact_label: "04. Contacto",
+                contact_title: "Contacto",
+                contact_desc: "Ponte en contacto conmigo para colaboraciones y proyectos de traducción.",
+                email_info: "Correo electrónico: <span class='placeholder-tag'>[buraya ekle]</span>",
+                footer_title: "Portafolio de Traductora"
+            }
+        };
+
+        let currentLang = 'tr';
+        let typewriterTimeout;
+
+        /* -------------------------------------------------------------
+           DAKTİLO EFEKTİ (TYPEWRITER ANIMATION)
+           ------------------------------------------------------------- */
+        function startTypewriter(text) {
+            clearTimeout(typewriterTimeout);
+            const el = document.getElementById("typewriter");
+            el.textContent = "";
+            let i = 0;
+
+            function typeChar() {
+                if (i < text.length) {
+                    el.textContent += text.charAt(i);
+                    i++;
+                    typewriterTimeout = setTimeout(typeChar, 42); // Harf yazım hızı
+                }
+            }
+            typeChar();
+        }
+
+        /* -------------------------------------------------------------
+           DİL DEĞİŞTİRME FONKSİYONU
+           ------------------------------------------------------------- */
+        function changeLanguage(lang) {
+            currentLang = lang;
+
+            // Aktif buton görselini güncelle
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`btn-${lang}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            // Sayfadaki metinleri güncelle
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Daktilo animasyonunu yeni dildeki cümleyle baştan başlat
+            startTypewriter(translations[lang].tagline);
+        }
+
+        // Sayfa ilk yüklendiğinde varsayılan Türkçe daktiloyu başlat
+        window.addEventListener('DOMContentLoaded', () => {
+            startTypewriter(translations.tr.tagline);
+        });
+    </script>
+</body>
+</html>
